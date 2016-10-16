@@ -40,7 +40,7 @@ namespace Waterworks
 
             if (filter.CanProcess(data))
             {
-                filter.Process(data);
+                data = filter.Process(data);
             }
 
             return true;

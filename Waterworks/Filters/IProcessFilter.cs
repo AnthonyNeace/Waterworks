@@ -4,7 +4,7 @@
     {
         bool CanProcess(T data);
 
-        void Process(T data);
+        T Process(T data);
     }
 
     public interface IProcessFilter<T, U> : IFilter<T, U>
