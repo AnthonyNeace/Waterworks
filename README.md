@@ -10,25 +10,25 @@ An extension of the Pipe and Filter pattern in .NET that allows for skipping fil
 
 Filters provide a simple interface processing input data and passing it on:
 
-    bool Stop(T data);
+    IEnumerable<IFilter<T>> Filters { get; }
 
-    bool CanProcess(T data);
+    bool Drip(ref T data, IFilter<T> filter);
 
-    void Process(T data);
+    bool Flow(ref T data);
 
 Filters also support cases where the input and ouput objects need to be maintained separately, such as API request and response containers:
 
-    bool Stop(T input, U output);
+    IEnumerable<IFilter<T, U>> Filters { get; }
 
-    bool CanProcess(T input, U output);
+    bool Drip(T input, ref U output, IFilter<T, U> filter);
 
-    void Process(T input, U output);
+    bool Flow(T input, ref U output);
 
 ### Pipelines
 
 Pipelines can be created with a collection of filters:
 
-    IEnumerable<IProcessFilter<ChatInput, ChatOutput>> filters = new List<IProcessFilter<ChatInput, ChatOutput>>()
+    IEnumerable<IFilter<ChatInput, ChatOutput>> filters = new List<IFilter<ChatInput, ChatOutput>>()
     {
         new AppendDateTimeFilter(),
         new AppendUserNameFilter(),
