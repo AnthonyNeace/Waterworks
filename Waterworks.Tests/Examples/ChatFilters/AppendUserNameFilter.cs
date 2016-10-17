@@ -20,7 +20,7 @@ namespace Waterworks.Tests.Examples.ChatFilters
             return !input.HideUserName;
         }
 
-        public void Process(ChatInput input, ChatOutput output)
+        public void Process(ChatInput input, ref ChatOutput output)
         {
             if(output.Message == null)
             {

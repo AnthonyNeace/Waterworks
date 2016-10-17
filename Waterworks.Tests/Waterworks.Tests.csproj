@@ -44,6 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Examples\ArithmeticFilters\AdditionFilter.cs" />
+    <Compile Include="Examples\ArithmeticFilters\DivisionFilter.cs" />
+    <Compile Include="Examples\ArithmeticFilterTests.cs" />
     <Compile Include="Examples\ChatFilters\AppendUserNameFilter.cs" />
     <Compile Include="Examples\ChatFilters\ChatInput.cs" />
     <Compile Include="Examples\ChatFilters\ChatOutput.cs" />

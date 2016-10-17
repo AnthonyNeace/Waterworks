@@ -35,7 +35,7 @@ namespace Waterworks.Tests.Examples
                 HideUserName = true,
                 Message = "(Message of the day) Welcome!",
                 Timestamp = new DateTimeOffset(2016, 1, 1, 0, 0, 0, new TimeSpan(0, 0, 0))
-            }, output);
+            }, ref output);
 
             Assert.IsTrue(success);
             Assert.AreEqual("20160101-0000 - (Message of the day) Welcome!", output.Message.ToString());
@@ -52,7 +52,7 @@ namespace Waterworks.Tests.Examples
                 HideUserName = false,
                 Message = "Hello, World!",
                 Timestamp = new DateTimeOffset(2016, 1, 1, 0, 0, 0, new TimeSpan(0, 0, 0))
-            }, output);
+            }, ref output);
 
             Assert.IsTrue(success);
             Assert.AreEqual("20160101-0000 - Anthony: Hello, World!", output.Message.ToString());
@@ -69,7 +69,7 @@ namespace Waterworks.Tests.Examples
                 HideUserName = false,
                 Message = null,
                 Timestamp = new DateTimeOffset(2016, 1, 1, 0, 0, 0, new TimeSpan(0, 0, 0))
-            }, output);
+            }, ref output);
 
             Assert.IsFalse(success);
         }
@@ -85,7 +85,7 @@ namespace Waterworks.Tests.Examples
                 HideUserName = false,
                 Message = "",
                 Timestamp = new DateTimeOffset(2016, 1, 1, 0, 0, 0, new TimeSpan(0, 0, 0))
-            }, output);
+            }, ref output);
 
             Assert.IsFalse(success);
         }

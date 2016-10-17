@@ -27,7 +27,7 @@ namespace Waterworks.Tests.Examples
         {
             string password = "big ' potato";
 
-            bool isValid = buildPipeline().Flow(password);
+            bool isValid = buildPipeline().Flow(ref password);
 
             Assert.IsFalse(isValid);
         }
@@ -37,7 +37,7 @@ namespace Waterworks.Tests.Examples
         {
             string password = "pass";
 
-            bool isValid = buildPipeline().Flow(password);
+            bool isValid = buildPipeline().Flow(ref password);
 
             Assert.IsFalse(isValid);
         }
@@ -47,7 +47,7 @@ namespace Waterworks.Tests.Examples
         {
             string password = "correcthorsebatterystaple";
 
-            bool isValid = buildPipeline().Flow(password);
+            bool isValid = buildPipeline().Flow(ref password);
 
             Assert.IsTrue(isValid);
         }

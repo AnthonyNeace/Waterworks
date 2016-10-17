@@ -15,7 +15,7 @@ namespace Waterworks.Tests.Examples.ChatFilters
             return false;
         }
 
-        public override void Process(ChatInput input, ChatOutput output)
+        public override void Process(ChatInput input, ref ChatOutput output)
         {
             if (output.Message == null)
             {
