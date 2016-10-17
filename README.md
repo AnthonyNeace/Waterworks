@@ -12,7 +12,7 @@ Filters provide a simple interface processing input data and passing it on:
 
     bool CanModify(T data);
 
-    void Modify(ref T data);
+    T Modify(T data);
 
     bool Stop(T data);
 
@@ -20,7 +20,7 @@ Filters also support cases where the input and ouput objects need to be maintain
 
     bool CanModify(T input, U output);
 
-    void Modify(T input, ref U output);
+    U Modify(T input, U output);
 
     bool Stop(T input, U output);
 
