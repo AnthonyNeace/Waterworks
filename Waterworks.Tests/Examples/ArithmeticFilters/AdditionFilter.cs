@@ -16,17 +16,17 @@ namespace Waterworks.Tests.Examples.ArithmeticFilters
             _add = add;
         }
 
-        public override void Modify(ref int data)
+        public override int Modify(int data)
         {
-            data += _add;
+            return data + _add;
         }
     }
 
     public class DualInputAdditionFilter : NullFilter<int, int>
     {
-        public override void Modify(int input, ref int output)
+        public override int Modify(int input, int output)
         {
-            output += input;
+            return output + input;
         }
     }
 }

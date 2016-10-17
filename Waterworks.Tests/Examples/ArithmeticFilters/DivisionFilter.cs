@@ -21,9 +21,9 @@ namespace Waterworks.Tests.Examples.ArithmeticFilters
             return _divide == 0 ? true : false;
         }
 
-        public override void Modify(ref int data)
+        public override int Modify(int data)
         {
-            data /= _divide;
+            return data / _divide;
         }
     }
 
@@ -34,9 +34,9 @@ namespace Waterworks.Tests.Examples.ArithmeticFilters
             return input == 0 ? true : false;
         }
 
-        public override void Modify(int input, ref int output)
+        public override int Modify(int input, int output)
         {
-            output /= input;
+            return output / input;
         }
     }
 }

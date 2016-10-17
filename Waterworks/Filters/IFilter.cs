@@ -4,7 +4,7 @@
     {
         bool CanModify(T data);
 
-        void Modify(ref T data);
+        T Modify(T data);
 
         bool Stop(T data);
     }
@@ -13,7 +13,7 @@
     {
         bool CanModify(T input, U output);
 
-        void Modify(T input, ref U output);
+        U Modify(T input, U output);
 
         bool Stop(T input, U output);
     }

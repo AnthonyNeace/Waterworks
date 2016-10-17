@@ -39,7 +39,7 @@ namespace Waterworks
 
             if (filter.CanModify(data))
             {
-                filter.Modify(ref data);
+                data = filter.Modify(data);
             }
 
             return true;
@@ -104,7 +104,7 @@ namespace Waterworks
 
             if (filter.CanModify(input, output))
             {
-                filter.Modify(input, ref output);
+                output = filter.Modify(input, output);
             }
 
             return true;

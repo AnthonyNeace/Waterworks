@@ -7,9 +7,9 @@
             return true;
         }
 
-        public virtual void Modify(ref T data)
+        public virtual T Modify(T data)
         {
-            
+            return data;
         }
 
         public virtual bool Stop(T data)
@@ -25,9 +25,9 @@
             return true;
         }
 
-        public virtual void Modify(T input, ref U output)
+        public virtual U Modify(T input, U output)
         {
-
+            return output;
         }
 
         public virtual bool Stop(T input, U output)

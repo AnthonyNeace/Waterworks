@@ -20,7 +20,7 @@ namespace Waterworks.Tests.Examples.ChatFilters
             return !input.HideUserName;
         }
 
-        public void Modify(ChatInput input, ref ChatOutput output)
+        public ChatOutput Modify(ChatInput input, ChatOutput output)
         {
             if(output.Message == null)
             {
@@ -33,6 +33,8 @@ namespace Waterworks.Tests.Examples.ChatFilters
             }
 
             output.Message.Append($"{input.UserName}:");
+
+            return output;
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Waterworks.Tests.Examples.ChatFilters
             return false;
         }
 
-        public override void Modify(ChatInput input, ref ChatOutput output)
+        public override ChatOutput Modify(ChatInput input, ChatOutput output)
         {
             if (output.Message == null)
             {
@@ -28,6 +28,8 @@ namespace Waterworks.Tests.Examples.ChatFilters
             }
 
             output.Message.Append(input.Message);
+
+            return output;
         }
     }
 }
