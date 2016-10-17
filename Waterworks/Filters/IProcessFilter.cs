@@ -11,6 +11,6 @@
     {
         bool CanProcess(T input, U output);
 
-        void Process(T input, U output);
+        void Process(T input, ref U output);
     }
 }

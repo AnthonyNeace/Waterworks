@@ -13,13 +13,11 @@ namespace Waterworks
     }
 
     public interface IPipeline<T, U>
-        where T : class
-        where U : class
     {
         IEnumerable<IProcessFilter<T, U>> Filters { get; }
 
-        bool Drip(T input, U output, IProcessFilter<T, U> filter);
+        bool Drip(T input, ref U output, IProcessFilter<T, U> filter);
 
-        bool Flow(T input, U output);
+        bool Flow(T input, ref U output);
     }
 }

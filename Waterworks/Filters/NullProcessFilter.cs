@@ -20,7 +20,7 @@
             return true;
         }
 
-        public virtual void Process(T input, U output)
+        public virtual void Process(T input, ref U output)
         {
 
         }
