@@ -8,7 +8,6 @@ namespace Waterworks
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class Pipeline<T> : IPipeline<T>
-    where T : class
     {
         public IEnumerable<IProcessFilter<T>> Filters { get; private set; }
 
@@ -26,7 +25,7 @@ namespace Waterworks
         /// </summary>
         /// <param name="data">Container for data to be processed.</param>
         /// <returns>Returns true when filter is processed, false when flow is interrupted.</returns>
-        public bool Drip(T data, IProcessFilter<T> filter)
+        public bool Drip(ref T data, IProcessFilter<T> filter)
         {
             if(filter == null)
             {
@@ -40,7 +39,7 @@ namespace Waterworks
 
             if (filter.CanProcess(data))
             {
-                data = filter.Process(data);
+                filter.Process(ref data);
             }
 
             return true;
@@ -51,13 +50,13 @@ namespace Waterworks
         /// </summary>
         /// <param name="data">Container for data to be processed.</param>
         /// <returns>Returns true when all filters processed, false when flow is interrupted.</returns>
-        public bool Flow(T data)
+        public bool Flow(ref T data)
         {
             if (Filters != null)
             {
                 foreach (var filter in Filters)
                 {
-                    if(!Drip(data, filter))
+                    if(!Drip(ref data, filter))
                     {
                         return false;
                     }

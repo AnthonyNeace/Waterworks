@@ -3,13 +3,13 @@ using Waterworks.Filters;
 
 namespace Waterworks
 {
-    public interface IPipeline<T> where T : class
+    public interface IPipeline<T>
     {
         IEnumerable<IProcessFilter<T>> Filters { get; }
 
-        bool Drip(T data, IProcessFilter<T> filter);
+        bool Drip(ref T data, IProcessFilter<T> filter);
 
-        bool Flow(T data);
+        bool Flow(ref T data);
     }
 
     public interface IPipeline<T, U>

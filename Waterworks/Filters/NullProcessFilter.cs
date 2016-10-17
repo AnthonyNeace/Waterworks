@@ -7,9 +7,9 @@
             return true;
         }
 
-        public virtual T Process(T data)
+        public virtual void Process(ref T data)
         {
-            return data;
+            
         }
     }
 
