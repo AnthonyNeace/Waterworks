@@ -3,7 +3,7 @@ using Waterworks.Filters;
 
 namespace Waterworks.Tests.Examples.PasswordFilters
 {
-    public class InvalidCharactersFilter : NullProcessFilter<string>
+    public class InvalidCharactersFilter : NullFilter<string>
     {
         private List<string> _invalidCharacters = new List<string>();
 

@@ -9,13 +9,13 @@ namespace Waterworks
     /// <typeparam name="T"></typeparam>
     public class Pipeline<T> : IPipeline<T>
     {
-        public IEnumerable<IProcessFilter<T>> Filters { get; private set; }
+        public IEnumerable<IFilter<T>> Filters { get; private set; }
 
         /// <summary>
         /// Public constructor.
         /// </summary>
         /// <param name="filters">Collection of filters to be processed.</param>
-        public Pipeline(IEnumerable<IProcessFilter<T>> filters)
+        public Pipeline(IEnumerable<IFilter<T>> filters)
         {
             Filters = filters;
         }
@@ -25,7 +25,7 @@ namespace Waterworks
         /// </summary>
         /// <param name="data">Container for data to be processed.</param>
         /// <returns>Returns true when filter is processed, false when flow is interrupted.</returns>
-        public bool Drip(ref T data, IProcessFilter<T> filter)
+        public bool Drip(ref T data, IFilter<T> filter)
         {
             if(filter == null)
             {
@@ -37,9 +37,9 @@ namespace Waterworks
                 return false;
             }
 
-            if (filter.CanProcess(data))
+            if (filter.CanModify(data))
             {
-                filter.Process(ref data);
+                filter.Modify(ref data);
             }
 
             return true;
@@ -74,13 +74,13 @@ namespace Waterworks
     /// <typeparam name="U"></typeparam>
     public class Pipeline<T, U> : IPipeline<T, U>
     {
-        public IEnumerable<IProcessFilter<T, U>> Filters { get; private set; }
+        public IEnumerable<IFilter<T, U>> Filters { get; private set; }
 
         /// <summary>
         /// Public constructor.
         /// </summary>
         /// <param name="filters">Collection of filters to be processed.</param>
-        public Pipeline(IEnumerable<IProcessFilter<T, U>> filters)
+        public Pipeline(IEnumerable<IFilter<T, U>> filters)
         {
             Filters = filters;
         }
@@ -90,7 +90,7 @@ namespace Waterworks
         /// </summary>
         /// <param name="data">Container for data to be processed.</param>
         /// <returns>Returns true when filter is processed, false when flow is interrupted.</returns>
-        public bool Drip(T input, ref U output, IProcessFilter<T, U> filter)
+        public bool Drip(T input, ref U output, IFilter<T, U> filter)
         {
             if (filter == null)
             {
@@ -102,9 +102,9 @@ namespace Waterworks
                 return false;
             }
 
-            if (filter.CanProcess(input, output))
+            if (filter.CanModify(input, output))
             {
-                filter.Process(input, ref output);
+                filter.Modify(input, ref output);
             }
 
             return true;

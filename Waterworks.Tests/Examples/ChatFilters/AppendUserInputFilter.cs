@@ -3,7 +3,7 @@ using Waterworks.Filters;
 
 namespace Waterworks.Tests.Examples.ChatFilters
 {
-    public class AppendUserInputFilter : NullProcessFilter<ChatInput, ChatOutput>
+    public class AppendUserInputFilter : NullFilter<ChatInput, ChatOutput>
     {
         public override bool Stop(ChatInput input, ChatOutput output)
         {
@@ -15,7 +15,7 @@ namespace Waterworks.Tests.Examples.ChatFilters
             return false;
         }
 
-        public override void Process(ChatInput input, ref ChatOutput output)
+        public override void Modify(ChatInput input, ref ChatOutput output)
         {
             if (output.Message == null)
             {

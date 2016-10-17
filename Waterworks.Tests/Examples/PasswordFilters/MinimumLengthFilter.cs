@@ -2,7 +2,7 @@
 
 namespace Waterworks.Tests.Examples.PasswordFilters
 {
-    public class MinimumLengthFilter : NullProcessFilter<string>
+    public class MinimumLengthFilter : NullFilter<string>
     {
         private int _minLength = 8;
 

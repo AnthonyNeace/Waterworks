@@ -41,11 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Filters\NullFilter.cs" />
-    <Compile Include="Filters\NullProcessFilter.cs" />
     <Compile Include="IPipeline.cs" />
-    <Compile Include="Filters\IProcessFilter.cs" />
-    <Compile Include="Pipeline.cs" />
     <Compile Include="Filters\IFilter.cs" />
+    <Compile Include="Pipeline.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -13,7 +13,7 @@ namespace Waterworks.Tests.Examples
     {
         private IPipeline<string> buildPipeline()
         {
-            IEnumerable<IProcessFilter<string>> filters = new List<IProcessFilter<string>>()
+            IEnumerable<IFilter<string>> filters = new List<IFilter<string>>()
             {
                 new MinimumLengthFilter(),
                 new InvalidCharactersFilter()

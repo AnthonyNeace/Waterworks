@@ -16,7 +16,7 @@ namespace Waterworks.Tests.Examples
     {
         private IPipeline<int> buildSingleInputPipeline(int add, int divide)
         {
-            IEnumerable<IProcessFilter<int>> filters = new List<IProcessFilter<int>>()
+            IEnumerable<IFilter<int>> filters = new List<IFilter<int>>()
             {
                 new SingleInputAdditionFilter(add),
                 new SingleInputDivisionFilter(divide)
@@ -27,7 +27,7 @@ namespace Waterworks.Tests.Examples
 
         private IPipeline<int, int> buildDualInputPipeline()
         {
-            IEnumerable<IProcessFilter<int, int>> filters = new List<IProcessFilter<int, int>>()
+            IEnumerable<IFilter<int, int>> filters = new List<IFilter<int, int>>()
             {
                 new DualInputAdditionFilter(),
                 new DualInputDivisionFilter()

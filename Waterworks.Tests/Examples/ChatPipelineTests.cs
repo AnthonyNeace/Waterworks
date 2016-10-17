@@ -14,7 +14,7 @@ namespace Waterworks.Tests.Examples
     {
         private IPipeline<ChatInput, ChatOutput> buildPipeline()
         {
-            IEnumerable<IProcessFilter<ChatInput, ChatOutput>> filters = new List<IProcessFilter<ChatInput, ChatOutput>>()
+            IEnumerable<IFilter<ChatInput, ChatOutput>> filters = new List<IFilter<ChatInput, ChatOutput>>()
             {
                 new AppendDateTimeFilter(),
                 new AppendUserNameFilter(),

@@ -7,7 +7,7 @@ using Waterworks.Filters;
 
 namespace Waterworks.Tests.Examples.ArithmeticFilters
 {
-    public class SingleInputAdditionFilter : NullProcessFilter<int>
+    public class SingleInputAdditionFilter : NullFilter<int>
     {
         private int _add;
 
@@ -16,15 +16,15 @@ namespace Waterworks.Tests.Examples.ArithmeticFilters
             _add = add;
         }
 
-        public override void Process(ref int data)
+        public override void Modify(ref int data)
         {
             data += _add;
         }
     }
 
-    public class DualInputAdditionFilter : NullProcessFilter<int, int>
+    public class DualInputAdditionFilter : NullFilter<int, int>
     {
-        public override void Process(int input, ref int output)
+        public override void Modify(int input, ref int output)
         {
             output += input;
         }

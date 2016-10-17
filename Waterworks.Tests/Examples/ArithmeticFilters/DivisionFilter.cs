@@ -7,7 +7,7 @@ using Waterworks.Filters;
 
 namespace Waterworks.Tests.Examples.ArithmeticFilters
 {
-    public class SingleInputDivisionFilter : NullProcessFilter<int>
+    public class SingleInputDivisionFilter : NullFilter<int>
     {
         private int _divide;
 
@@ -21,20 +21,20 @@ namespace Waterworks.Tests.Examples.ArithmeticFilters
             return _divide == 0 ? true : false;
         }
 
-        public override void Process(ref int data)
+        public override void Modify(ref int data)
         {
             data /= _divide;
         }
     }
 
-    public class DualInputDivisionFilter : NullProcessFilter<int, int>
+    public class DualInputDivisionFilter : NullFilter<int, int>
     {
         public override bool Stop(int input, int output)
         {
             return input == 0 ? true : false;
         }
 
-        public override void Process(int input, ref int output)
+        public override void Modify(int input, ref int output)
         {
             output /= input;
         }

@@ -3,7 +3,7 @@ using Waterworks.Filters;
 
 namespace Waterworks.Tests.Examples.ChatFilters
 {
-    public class AppendDateTimeFilter : IProcessFilter<ChatInput, ChatOutput>
+    public class AppendDateTimeFilter : IFilter<ChatInput, ChatOutput>
     {
         public bool Stop(ChatInput input, ChatOutput output)
         {
@@ -15,12 +15,12 @@ namespace Waterworks.Tests.Examples.ChatFilters
             return false;
         }
 
-        public bool CanProcess(ChatInput input, ChatOutput output)
+        public bool CanModify(ChatInput input, ChatOutput output)
         {
             return input.Timestamp.HasValue;
         }
 
-        public void Process(ChatInput input, ref ChatOutput output)
+        public void Modify(ChatInput input, ref ChatOutput output)
         {
             if (output.Message == null)
             {
