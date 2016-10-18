@@ -3,6 +3,7 @@
 An extension of the Pipe and Filter pattern in .NET that allows for skipping filters.
 
 [![Build status](https://ci.appveyor.com/api/projects/status/j9dc9ikhw6w5r2h7/branch/master?svg=true)](https://ci.appveyor.com/project/AnthonyNeace/waterworks)
+[![NuGet](https://img.shields.io/nuget/v/Waterworks.svg)](https://www.nuget.org/packages/Waterworks/)
 
 ## Usage
 
