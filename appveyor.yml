@@ -11,3 +11,6 @@ build:
   project: Waterworks.sln
   publish_nuget: true
   verbosity: minimal
+skip_commits:
+  files:
+    - '**/*.md'  
