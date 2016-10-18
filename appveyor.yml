@@ -12,4 +12,4 @@ build:
   publish_nuget: true
   verbosity: minimal
 artifacts:
-- path: NuGet/Release/Waterworks.*.nupkg
+- path: '*.nupkg'
