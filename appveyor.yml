@@ -9,4 +9,7 @@ before_build:
 - cmd: nuget.exe restore Waterworks.sln
 build:
   project: Waterworks.sln
+  publish_nuget: true
   verbosity: minimal
+artifacts:
+- path: NuGet/Release/Waterworks.*.nupkg
