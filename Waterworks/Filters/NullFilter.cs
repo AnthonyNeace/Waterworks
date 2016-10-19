@@ -1,6 +1,6 @@
 ﻿namespace Waterworks.Filters
 {
-    public class NullFilter<T> : IFilter<T>
+    public abstract class NullFilter<T> : IFilter<T>
     {
         public virtual bool CanModify(T data)
         {
