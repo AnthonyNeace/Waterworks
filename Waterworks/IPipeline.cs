@@ -5,7 +5,13 @@ namespace Waterworks
 {
     public interface IPipeline<T>
     {
-        IEnumerable<IFilter<T>> Filters { get; }
+        void Drain(IFilter<T> filter);
+
+        void Drain(IEnumerable<IFilter<T>> filters);
+
+        void Fill(IFilter<T> filter);
+
+        void Fill(IEnumerable<IFilter<T>> filters);
 
         bool Drip(ref T data, IFilter<T> filter);
 
@@ -14,7 +20,13 @@ namespace Waterworks
 
     public interface IPipeline<T, U>
     {
-        IEnumerable<IFilter<T, U>> Filters { get; }
+        void Drain(IFilter<T, U> filter);
+
+        void Drain(IEnumerable<IFilter<T, U>> filters);
+
+        void Fill(IFilter<T, U> filter);
+
+        void Fill(IEnumerable<IFilter<T, U>> filters);
 
         bool Drip(T input, ref U output, IFilter<T, U> filter);
 

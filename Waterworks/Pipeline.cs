@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
+using System.Collections.Generic;
 using Waterworks.Filters;
 
 namespace Waterworks
@@ -9,7 +10,15 @@ namespace Waterworks
     /// <typeparam name="T"></typeparam>
     public class Pipeline<T> : IPipeline<T>
     {
-        public IEnumerable<IFilter<T>> Filters { get; private set; }
+        protected List<IFilter<T>> Filters { get; private set; }
+
+        /// <summary>
+        /// Public constructor.
+        /// </summary>
+        public Pipeline()
+        {
+            Filters = new List<IFilter<T>>();
+        }
 
         /// <summary>
         /// Public constructor.
@@ -17,7 +26,46 @@ namespace Waterworks
         /// <param name="filters">Collection of filters to be processed.</param>
         public Pipeline(IEnumerable<IFilter<T>> filters)
         {
-            Filters = filters;
+            Filters = filters.ToList();
+        }
+
+        /// <summary>
+        /// Remove a single filter from the Filters collection.
+        /// </summary>
+        /// <param name="filter"></param>
+        public void Drain(IFilter<T> filter)
+        {
+            Filters.Remove(filter);
+        }
+
+        /// <summary>
+        /// Remove many filters from the Filters collection.
+        /// </summary>
+        /// <param name="filter"></param>
+        public void Drain(IEnumerable<IFilter<T>> filters)
+        {
+            foreach (var filter in filters)
+            {
+                Drain(filter);
+            }
+        }
+
+        /// <summary>
+        /// Add a single filter to the Filters collection.
+        /// </summary>
+        /// <param name="filter"></param>
+        public void Fill(IFilter<T> filter)
+        {
+            Filters.Add(filter);
+        }
+
+        /// <summary>
+        /// Add many filters to the Filters collection.
+        /// </summary>
+        /// <param name="filter"></param>
+        public void Fill(IEnumerable<IFilter<T>> filters)
+        {
+            Filters.AddRange(filters);
         }
 
         /// <summary>
@@ -74,7 +122,15 @@ namespace Waterworks
     /// <typeparam name="U"></typeparam>
     public class Pipeline<T, U> : IPipeline<T, U>
     {
-        public IEnumerable<IFilter<T, U>> Filters { get; private set; }
+        protected List<IFilter<T, U>> Filters { get; private set; }
+
+        /// <summary>
+        /// Public constructor.
+        /// </summary>
+        public Pipeline()
+        {
+            Filters = new List<IFilter<T, U>>();
+        }
 
         /// <summary>
         /// Public constructor.
@@ -82,7 +138,46 @@ namespace Waterworks
         /// <param name="filters">Collection of filters to be processed.</param>
         public Pipeline(IEnumerable<IFilter<T, U>> filters)
         {
-            Filters = filters;
+            Filters = filters.ToList();
+        }
+
+        /// <summary>
+        /// Remove a single filter from the Filters collection.
+        /// </summary>
+        /// <param name="filter"></param>
+        public void Drain(IFilter<T, U> filter)
+        {
+            Filters.Remove(filter);
+        }
+
+        /// <summary>
+        /// Remove many filters from the Filters collection.
+        /// </summary>
+        /// <param name="filter"></param>
+        public void Drain(IEnumerable<IFilter<T, U>> filters)
+        {
+            foreach (var filter in filters)
+            {
+                Drain(filter);
+            }
+        }
+
+        /// <summary>
+        /// Add a single filter to the Filters collection.
+        /// </summary>
+        /// <param name="filter"></param>
+        public void Fill(IFilter<T, U> filter)
+        {
+            Filters.Add(filter);
+        }
+
+        /// <summary>
+        /// Add many filters to the Filters collection.
+        /// </summary>
+        /// <param name="filter"></param>
+        public void Fill(IEnumerable<IFilter<T, U>> filters)
+        {
+            Filters.AddRange(filters);
         }
 
         /// <summary>
